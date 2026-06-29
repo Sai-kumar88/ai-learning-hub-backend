@@ -264,8 +264,10 @@ Stores employee course completion records.
 ---
 
 AI Learning Hub Backend
+
 Base URL
 https://ai-learning-hub-backend.vercel.app
+
 1. Get All Courses
 
 Method: GET
@@ -279,7 +281,8 @@ Purpose
 Fetch all AI learning courses.
 Display course name, provider, duration, certificate.
 Open course_url when the employee clicks Start Course.
-2. Mark Course as Completed
+
+2.Mark Course as Completed
 
 Method: POST
 
@@ -304,7 +307,8 @@ Example:
     "employee_id": "EMP001",
     "course_id": 1
 }
-3. Get Completed Courses
+
+3.Get Completed Courses
 
 Method: GET
 

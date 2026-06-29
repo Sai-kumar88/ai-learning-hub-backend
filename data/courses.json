@@ -1,18 +1,18 @@
 [
-    {
-        "id": 1,
-        "course_name": "Claude 101",
-        "provider": "Anthropic",
-        "duration": "30-60 Minutes",
-        "certificate": "Yes",
-        "course_url": "https://www.anthropic.com/learn/claude-101"
-    },
-    {
-        "id": 2,
-        "course_name": "AI Fluency: Framework & Foundations",
-        "provider": "Anthropic",
-        "duration": "1.1 Hours",
-        "certificate": "Yes",
-        "course_url": "https://www.anthropic.com/learn/ai-fluency"
-    }
+  {
+    "id": 1,
+    "course_name": "Claude 101",
+    "provider": "Anthropic",
+    "duration": "30-60 Minutes",
+    "certificate": "Yes",
+    "course_url": "https://anthropic.skilljar.com/claude-101"
+  },
+  {
+    "id": 2,
+    "course_name": "AI Fluency: Framework & Foundations",
+    "provider": "Anthropic",
+    "duration": "1.1 Hours",
+    "certificate": "Yes",
+    "course_url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations"
+  }
 ]
