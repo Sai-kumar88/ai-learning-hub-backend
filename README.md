@@ -263,56 +263,54 @@ Stores employee course completion records.
 
 ---
 
-
+AI Learning Hub Backend
+Base URL
+https://ai-learning-hub-backend.vercel.app
 1. Get All Courses
 
 Method: GET
 
-URL
+API
 
-http://127.0.0.1:5000/courses
+GET https://ai-learning-hub-backend.vercel.app/courses
 
 Purpose
 
-Load all AI Awareness courses.
-Display:
-Course Name
-Provider
-Duration
-Certificate
-Start Course button
-
-2.Mark Course Completed
+Fetch all AI learning courses.
+Display course name, provider, duration, certificate.
+Open course_url when the employee clicks Start Course.
+2. Mark Course as Completed
 
 Method: POST
 
-URL
+API
 
-http://127.0.0.1:5000/course/complete
+POST https://ai-learning-hub-backend.vercel.app/course/complete
+
+Headers
+
+Content-Type: application/json
 
 Request Body
+
+{
+    "employee_id": "<LoggedInEmployeeID>",
+    "course_id": 1
+}
+
+Example:
 
 {
     "employee_id": "EMP001",
     "course_id": 1
 }
-
-Purpose
-
-When the employee clicks "Mark as Completed", call this API.
-
-3.Get Completed Courses
+3. Get Completed Courses
 
 Method: GET
 
-URL
+API
 
-http://127.0.0.1:5000/course/completed
-
-Purpose
-
-Display employees who have completed the courses.
-
+GET https://ai-learning-hub-backend.vercel.app/course/completed
 
 # Developed For
 
