@@ -18,9 +18,9 @@ def upload_certificate(employee_id, course_id, certificate):
 
         result = cloudinary.uploader.upload(
             certificate,
-            resource_type="raw",
+            resource_type="auto",
             folder="certificates",
-            public_id=f"{employee_id}_{course_id}",
+            public_id=f"{employee_id}_{course_id}_v2",
             overwrite=True
         )
 
