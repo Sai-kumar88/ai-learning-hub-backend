@@ -17,10 +17,11 @@ def upload_certificate(employee_id, course_id, certificate):
     try:
 
         result = cloudinary.uploader.upload(
-            certificate,
-            resource_type="auto",
+            certificate.stream,
+            resource_type="image",
             folder="certificates",
-            public_id=f"{employee_id}_{course_id}_v2",
+            public_id=f"{employee_id}_{course_id}_v3",
+            format="pdf",
             overwrite=True
         )
 
