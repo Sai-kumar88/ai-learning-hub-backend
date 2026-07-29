@@ -1,6 +1,4 @@
-import os
-
-UPLOAD_FOLDER = "uploads"
+import cloudinary.uploader
 
 def upload_certificate(employee_id, course_id, certificate):
 
@@ -16,10 +14,25 @@ def upload_certificate(employee_id, course_id, certificate):
             "message": "Please upload a certificate."
         }
 
-    filename = certificate.filename
+    try:
 
-    return {
-        "status": "success",
-        "message": "Certificate received successfully.",
-        "file_name": filename
-    }
+        result = cloudinary.uploader.upload(
+            certificate,
+            resource_type="raw",
+            folder="certificates",
+            public_id=f"{employee_id}_{course_id}"
+        )
+
+        return {
+            "status": "success",
+            "message": "Certificate uploaded successfully.",
+            "file_name": f"{employee_id}_{course_id}.pdf",
+            "certificate_url": result["secure_url"]
+        }
+
+    except Exception as e:
+
+        return {
+            "status": "error",
+            "message": str(e)
+        }

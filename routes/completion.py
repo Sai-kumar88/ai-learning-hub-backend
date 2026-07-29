@@ -12,11 +12,16 @@ def complete_course():
     data = request.get_json()
     employee_id = data.get("employee_id")
     course_id = data.get("course_id")
+    certificate_url = data.get("certificate_url")
 
     if not employee_id or not course_id:
         return error_response("employee_id and course_id are required")
 
-    result = mark_course_completed(employee_id, course_id)
+    result = mark_course_completed(
+        employee_id,
+        course_id,
+        certificate_url
+    )
 
     if result["status"] == "error":
         return error_response(result["message"])
