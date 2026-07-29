@@ -1,13 +1,9 @@
 [
     {
-        "employee_id": "EMP001",
-        "course_id": 1,
-        "status": "Completed",
-        "completed_date": "2026-06-27"
-    },
-    {
         "employee_id": "1693",
         "course_id": 1,
+        "certificate_file": "1693_1.pdf",
+        "certificate_url": "https://res.cloudinary.com/klukxp28/raw/upload/v1785325632/certificates/1693_1",
         "status": "Completed",
         "completed_date": "2026-07-29"
     }

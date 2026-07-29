@@ -19,6 +19,8 @@ cloudinary.config(
     api_secret=app.config["CLOUDINARY_API_SECRET"],
     secure=True
 )
+print("Cloud Name:", app.config["CLOUDINARY_CLOUD_NAME"])
+print("API Key:", app.config["CLOUDINARY_API_KEY"])
 
 CORS(app)
 

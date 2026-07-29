@@ -20,8 +20,13 @@ def upload_certificate(employee_id, course_id, certificate):
             certificate,
             resource_type="raw",
             folder="certificates",
-            public_id=f"{employee_id}_{course_id}"
+            public_id=f"{employee_id}_{course_id}",
+            overwrite=True
         )
+
+        print("========== CLOUDINARY RESPONSE ==========")
+        print(result)
+        print("=========================================")
 
         return {
             "status": "success",
