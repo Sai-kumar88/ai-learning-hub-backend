@@ -16,12 +16,12 @@ def complete_course():
     if not employee_id or not course_id:
         return error_response("employee_id and course_id are required")
 
-    saved = mark_course_completed(employee_id, course_id)
+    result = mark_course_completed(employee_id, course_id)
 
-    if not saved:
-        return error_response("Course already marked as completed")
+    if result["status"] == "error":
+        return error_response(result["message"])
 
-    return success_response(message="Course marked as completed")
+    return success_response(message=result["message"])
 
 
 @completion_bp.route("/course/completed", methods=["GET"])

@@ -4,5 +4,11 @@
         "course_id": 1,
         "status": "Completed",
         "completed_date": "2026-06-27"
+    },
+    {
+        "employee_id": "1693",
+        "course_id": 1,
+        "status": "Completed",
+        "completed_date": "2026-07-29"
     }
 ]
