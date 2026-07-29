@@ -16,17 +16,10 @@ def upload_certificate(employee_id, course_id, certificate):
             "message": "Please upload a certificate."
         }
 
-    if not os.path.exists(UPLOAD_FOLDER):
-        os.makedirs(UPLOAD_FOLDER)
-
-    filename = f"{employee_id}_{course_id}.pdf"
-
-    filepath = os.path.join(UPLOAD_FOLDER, filename)
-
-    certificate.save(filepath)
+    filename = certificate.filename
 
     return {
         "status": "success",
-        "message": "Certificate uploaded successfully.",
+        "message": "Certificate received successfully.",
         "file_name": filename
     }
