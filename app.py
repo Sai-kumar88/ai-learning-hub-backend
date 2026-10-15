@@ -48,25 +48,19 @@ def create_app() -> Flask:
     @app.route("/", defaults={"path": ""})
     @app.route("/<path:path>")
     def serve_frontend(path: str):
-        # Respond with JSON if an API client explicitly requests JSON on root
-        if path == "" and request.headers.get("Accept") == "application/json":
-            return jsonify({
-                "status": "success",
-                "message": "Vaps Artificial Intelligence Learning Center Backend Running Successfully"
-            })
-
         dist_folder = Config.FRONTEND_DIST
         asset_file = dist_folder / path
 
-        # Serve static file from dist folder if it exists
+        # Serve static asset from dist folder if it exists
         if path != "" and asset_file.is_file():
             return send_from_directory(str(dist_folder), path)
 
-        # Fallback to index.html for client-side routing
+        # Serve React frontend index.html for root and client-side routing
         index_file = dist_folder / "index.html"
         if index_file.is_file():
             return send_from_directory(str(dist_folder), "index.html")
 
+        # Fallback JSON only if frontend build has not been generated
         return jsonify({
             "status": "success",
             "message": "Vaps Artificial Intelligence Learning Center API running. Run 'npm run build' inside frontend/ to build the web portal."

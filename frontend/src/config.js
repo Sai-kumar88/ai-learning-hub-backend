@@ -30,9 +30,14 @@ export const getApiBaseUrl = () => {
     if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
       return LOCAL_API_BASE;
     }
+
+    // 5. When running in browser on deployed platform (Vercel/custom domain), use current origin
+    if (window.location.origin && window.location.origin !== "null") {
+      return window.location.origin;
+    }
   }
 
-  // 5. Default fallback to deployed cloud backend
+  // 6. Default fallback to deployed cloud backend
   return DEFAULT_API_BASE;
 };
 
