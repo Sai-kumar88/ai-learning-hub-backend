@@ -1,323 +1,209 @@
-# AI Awareness 
-## Overview
+# AI Course Catalog
 
-The AI Awareness Backend is a Flask-based REST API developed for the Training Module. It provides AI awareness course information and allows employees to mark external AI courses as completed.
-
-Employees can access free AI learning resources, complete the courses on the provider's website, earn certificates, and update their completion status in the ERP.
+A clean, modern web platform and REST API for exploring curated Artificial Intelligence courses and learning resources from leading AI pioneers.
 
 ---
 
-# Features
+## 🌟 Overview
 
-* View available AI Awareness courses
-* Open external AI learning links
-* Mark a course as completed
-* View completed course records
-* Simple JSON-based storage
-* REST APIs for frontend integration
+The **AI Course Catalog** provides a friction-free learning directory where users can browse world-class, accredited AI awareness courses, inspect course durations and credentials, and launch directly into external course materials.
+
+All tracking features, employee ID requirements, progress percentages, and certificate uploads have been eliminated to keep the platform simple, fast, and accessible to everyone.
 
 ---
 
-# Project Structure
+## 🚀 Features
+
+* **Curated Course Directory**: Browse AI awareness courses with detailed duration, provider, and certification information.
+* **Instant Search & Provider Filters**: Real-time filtering by course title or provider (e.g., Anthropic).
+* **One-Click Course Access**: Direct **Start Learning** links to external course materials.
+* **Frictionless Experience**: Zero employee ID requirements, no login walls, and no completion tracking.
+* **Responsive Modern Design**: Built with React and Vanilla CSS for high performance and visual polish.
+* **All-in-One Deployment**: Flask serves both the REST API and the compiled React production frontend on `http://127.0.0.1:5000`.
+
+---
+
+## 📁 Project Structure
 
 ```text
-training-resource-backend/
+ai-awareness-backend/
 │
-├── app.py
-├── config.py
-├── requirements.txt
+├── app.py                     # Flask application entry point & static file server
+├── config.py                  # Application configuration
+├── requirements.txt           # Python backend dependencies
+├── run.bat                    # One-click Windows launch script
+│
+├── data/
+│   └── courses.json           # Course catalog data store
 │
 ├── routes/
 │   ├── __init__.py
-│   ├── courses.py
-│   └── completion.py
+│   └── courses.py             # Courses REST endpoint (/courses)
 │
 ├── services/
 │   ├── __init__.py
-│   ├── course_service.py
-│   └── completion_service.py
+│   └── course_service.py      # Course retrieval service logic
 │
-├── data/
-│   ├── courses.json
-│   └── completed_courses.json
+├── utils/
+│   ├── __init__.py
+│   └── response.py            # Standard JSON API response helper
 │
-└── utils/
-    ├── __init__.py
-    └── response.py
+└── frontend/                  # React + Vite frontend application
+    ├── index.html             # HTML entry point
+    ├── package.json           # Frontend dependencies & scripts
+    ├── vite.config.js         # Vite bundler configuration
+    ├── dist/                  # Compiled production build served by Flask
+    └── src/
+        ├── App.jsx                 # Top-level orchestrator layout
+        ├── index.css               # Core design system & responsive styling
+        ├── config.js               # API base URL configuration
+        ├── hooks/
+        │   └── useCourses.js       # Custom hook for data, search & filtering
+        ├── components/
+        │   ├── Navbar.jsx          # Clean top header and branding
+        │   ├── Hero.jsx            # Hero presentation banner
+        │   ├── CatalogControls.jsx # Search input & provider filter chips
+        │   ├── CourseGrid.jsx      # Grid container with loading & empty states
+        │   ├── CourseCard.jsx      # Course card with direct launch link
+        │   └── ErrorBanner.jsx     # Connection error alert with retry action
+        └── services/
+            └── api.js              # Fetch client for courses API
 ```
 
 ---
 
-# Installation
+## ⚡ Quick Start
 
-Clone the project.
+### Option 1: One-Click Run (Windows)
 
-```bash
-git clone <repository-url>
+Simply double-click `run.bat` in the project root:
+
+```cmd
+run.bat
 ```
 
-Navigate to the project.
+This activates the virtual environment, launches the Flask server, and automatically opens your default web browser to `http://127.0.0.1:5000`.
+
+---
+
+### Option 2: Manual Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd ai-awareness-backend
+   ```
+
+2. **Create and activate a virtual environment**:
+   - **Windows**:
+     ```bash
+     python -m venv .venv
+     .venv\Scripts\activate
+     ```
+   - **macOS / Linux**:
+     ```bash
+     python3 -m venv .venv
+     source .venv/bin/activate
+     ```
+
+3. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Start the application**:
+   ```bash
+   python app.py
+   ```
+
+5. **Open in browser**:
+   Navigate to [http://127.0.0.1:5000](http://127.0.0.1:5000).
+
+---
+
+## 💻 Frontend Development (Vite Dev Server)
+
+If you wish to run the frontend independently with hot module replacement (HMR):
 
 ```bash
-cd training-resource-backend
+cd frontend
+npm install
+npm run dev
 ```
 
-Create Virtual Environment.
+The dev server will run at `http://localhost:5173/`.
 
+To build updated production assets for Flask to serve:
 ```bash
-python -m venv .venv
-```
-
-Activate Virtual Environment.
-
-### Windows
-
-```bash
-.venv\Scripts\activate
-```
-
-### Linux / Mac
-
-```bash
-source .venv/bin/activate
-```
-
-Install dependencies.
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the application.
-
-```bash
-python app.py
-```
-
-Server runs at
-
-```text
-http://127.0.0.1:5000
+npm run build
 ```
 
 ---
 
-# API Endpoints
+## 📡 API Reference
 
-## Health Check
-
-### Request
+### 1. Health Check
 
 ```http
-GET /
+GET /api/health
 ```
 
-### Response
-
+**Response**:
 ```json
 {
-    "status": "success",
-    "message": "Training Resource Backend Running Successfully"
+  "status": "success",
+  "message": "Training Resource Backend Running Successfully"
 }
 ```
 
 ---
 
-## Get All Courses
-
-### Request
+### 2. Get All Courses
 
 ```http
 GET /courses
 ```
 
-### Response
-
+**Response**:
 ```json
 {
-    "status": "success",
-    "message": "Courses fetched successfully",
-    "data": [
-        {
-            "id": 1,
-            "course_name": "Claude 101",
-            "provider": "Anthropic",
-            "duration": "30-60 Minutes",
-            "certificate": "Yes",
-            "course_url": "https://www.anthropic.com/learn/claude-101"
-        }
-    ]
+  "status": "success",
+  "message": "Courses fetched successfully",
+  "data": [
+    {
+      "id": 1,
+      "course_name": "Claude 101",
+      "provider": "Anthropic",
+      "duration": "30-60 Minutes",
+      "certificate": "Yes",
+      "course_url": "https://anthropic.skilljar.com/claude-101"
+    },
+    {
+      "id": 2,
+      "course_name": "AI Fluency: Framework & Foundations",
+      "provider": "Anthropic",
+      "duration": "1.1 Hours",
+      "certificate": "Yes",
+      "course_url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations"
+    }
+  ]
 }
 ```
 
 ---
 
-## Mark Course Completed
+## 📚 Current Courses Catalog
 
-### Request
-
-```http
-POST /course/complete
-```
-
-### Request Body
-
-```json
-{
-    "employee_id":"EMP001",
-    "course_id":1
-}
-```
-
-### Response
-
-```json
-{
-    "status":"success",
-    "message":"Course marked as completed"
-}
-```
+| ID | Course Name | Provider | Duration | Certificate | URL |
+|---|---|---|---|---|---|
+| 1 | Claude 101 | Anthropic | 30–60 Minutes | Yes | [Open Course](https://anthropic.skilljar.com/claude-101) |
+| 2 | AI Fluency: Framework & Foundations | Anthropic | 1.1 Hours | Yes | [Open Course](https://anthropic.skilljar.com/ai-fluency-framework-foundations) |
 
 ---
 
-## View Completed Courses
+## 🛠️ Technologies Used
 
-### Request
-
-```http
-GET /course/completed
-```
-
-### Response
-
-```json
-{
-    "status":"success",
-    "message":"Completed courses fetched successfully",
-    "data":[
-        {
-            "employee_id":"EMP001",
-            "course_id":1,
-            "status":"Completed",
-            "completed_date":"2026-06-27"
-        }
-    ]
-}
-```
-
----
-
-# Frontend Integration Flow
-
-1. Call **GET /courses** when the page loads.
-2. Display all AI Awareness courses.
-3. Clicking **Start Course** opens the external course URL.
-4. After completing the course, the employee clicks **Mark as Completed**.
-5. Frontend calls **POST /course/complete**.
-6. HR/Admin can retrieve completion details using **GET /course/completed**.
-
----
-
-# Data Storage
-
-## courses.json
-
-Stores all available AI awareness courses.
-
-## completed_courses.json
-
-Stores employee course completion records.
-
----
-
-# Technologies Used
-
-* Python 3.x
-* Flask
-* Flask-CORS
-* JSON Storage
-* Gunicorn
-
----
-
-# Current AI Courses
-
-| Course                              | Provider  | Duration      | Certificate |
-| ----------------------------------- | --------- | ------------- | ----------- |
-| Claude 101                          | Anthropic | 30–60 Minutes | Yes         |
-| AI Fluency: Framework & Foundations | Anthropic | 1.1 Hours     | Yes         |
-
----
-
-# Future Enhancements
-
-* Database integration (MySQL/PostgreSQL)
-* Employee authentication
-* Certificate upload support
-* Completion dashboard
-* Course progress tracking
-* Email notifications
-* Admin analytics
-* Search and filtering
-* Course categories
-
----
-
-AI Learning Hub Backend
-
-Base URL
-https://ai-learning-hub-backend.vercel.app
-
-1. Get All Courses
-
-Method: GET
-
-API
-
-GET https://ai-learning-hub-backend.vercel.app/courses
-
-Purpose
-
-Fetch all AI learning courses.
-Display course name, provider, duration, certificate.
-Open course_url when the employee clicks Start Course.
-
-2.Mark Course as Completed
-
-Method: POST
-
-API
-
-POST https://ai-learning-hub-backend.vercel.app/course/complete
-
-Headers
-
-Content-Type: application/json
-
-Request Body
-
-{
-    "employee_id": "<LoggedInEmployeeID>",
-    "course_id": 1
-}
-
-Example:
-
-{
-    "employee_id": "EMP001",
-    "course_id": 1
-}
-
-3.Get Completed Courses
-
-Method: GET
-
-API
-
-GET https://ai-learning-hub-backend.vercel.app/course/completed
-
-# Developed For
-
-Training Module – AI Awareness Program
-
-This backend enables employees to discover AI learning resources, complete free certification courses, and maintain completion records within the organization's training system.
+* **Backend**: Python 3, Flask, Flask-CORS
+* **Frontend**: React 19, Vite, Lucide Icons, Vanilla CSS Design System
+* **Data Layer**: JSON storage (`data/courses.json`)
+* **Serving**: Flask static routing serving compiled React SPA bundle

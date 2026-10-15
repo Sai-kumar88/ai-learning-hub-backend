@@ -1,12 +1,20 @@
 import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Config:
-    DEBUG = True
+    """Application configuration settings."""
+    DEBUG = os.getenv("FLASK_DEBUG", "True").lower() in ("true", "1", "yes")
     JSON_SORT_KEYS = False
 
-    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-    DATA_FOLDER = os.path.join(BASE_DIR, "data")
+    # Directory Paths
+    BASE_DIR = Path(__file__).resolve().parent
+    DATA_FOLDER = BASE_DIR / "data"
+    COURSES_FILE = DATA_FOLDER / "courses.json"
+    FRONTEND_DIST = BASE_DIR / "frontend" / "dist"
 
-    CLOUDINARY_CLOUD_NAME = os.getenv("CLOUDINARY_CLOUD_NAME")
-    CLOUDINARY_API_KEY = os.getenv("CLOUDINARY_API_KEY")
-    CLOUDINARY_API_SECRET = os.getenv("CLOUDINARY_API_SECRET")
+    # Server settings
+    HOST = os.getenv("HOST", "0.0.0.0")
+    PORT = int(os.getenv("PORT", 5000))
