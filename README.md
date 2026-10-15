@@ -1,4 +1,4 @@
-# AI Course Catalog
+# Vaps Artificial Intelligence Learning Center
 
 A clean, modern web platform and REST API for exploring curated Artificial Intelligence courses and learning resources from leading AI pioneers.
 
@@ -6,7 +6,7 @@ A clean, modern web platform and REST API for exploring curated Artificial Intel
 
 ## 🌟 Overview
 
-The **AI Course Catalog** provides a friction-free learning directory where users can browse world-class, accredited AI awareness courses, inspect course durations and credentials, and launch directly into external course materials.
+The **Vaps Artificial Intelligence Learning Center** provides a friction-free learning directory where users can browse world-class, accredited AI awareness courses, inspect actual curriculum durations and credentials, and launch directly into external course materials.
 
 All tracking features, employee ID requirements, progress percentages, and certificate uploads have been eliminated to keep the platform simple, fast, and accessible to everyone.
 
@@ -14,8 +14,7 @@ All tracking features, employee ID requirements, progress percentages, and certi
 
 ## 🚀 Features
 
-* **Curated Course Directory**: Browse AI awareness courses with detailed duration, provider, and certification information.
-* **Instant Search & Provider Filters**: Real-time filtering by course title or provider (e.g., Anthropic).
+* **Curated Course Directory**: Browse AI awareness courses with verified curriculum duration, provider, and certification information.
 * **One-Click Course Access**: Direct **Start Learning** links to external course materials.
 * **Frictionless Experience**: Zero employee ID requirements, no login walls, and no completion tracking.
 * **Responsive Modern Design**: Built with React and Vanilla CSS for high performance and visual polish.
@@ -54,20 +53,19 @@ ai-awareness-backend/
     ├── vite.config.js         # Vite bundler configuration
     ├── dist/                  # Compiled production build served by Flask
     └── src/
-        ├── App.jsx                 # Top-level orchestrator layout
-        ├── index.css               # Core design system & responsive styling
-        ├── config.js               # API base URL configuration
+        ├── App.jsx            # Top-level orchestrator layout
+        ├── index.css          # Core design system & responsive styling
+        ├── config.js          # API base URL configuration
         ├── hooks/
-        │   └── useCourses.js       # Custom hook for data, search & filtering
+        │   └── useCourses.js  # Custom hook for catalog data fetching
         ├── components/
-        │   ├── Navbar.jsx          # Clean top header and branding
-        │   ├── Hero.jsx            # Hero presentation banner
-        │   ├── CatalogControls.jsx # Search input & provider filter chips
-        │   ├── CourseGrid.jsx      # Grid container with loading & empty states
-        │   ├── CourseCard.jsx      # Course card with direct launch link
-        │   └── ErrorBanner.jsx     # Connection error alert with retry action
+        │   ├── Navbar.jsx     # Clean top header and branding
+        │   ├── Hero.jsx       # Hero presentation banner
+        │   ├── CourseGrid.jsx # Grid container with loading & empty states
+        │   ├── CourseCard.jsx # Course card with direct launch link
+        │   └── ErrorBanner.jsx# Connection error alert with retry action
         └── services/
-            └── api.js              # Fetch client for courses API
+            └── api.js         # Fetch client for courses API
 ```
 
 ---
@@ -152,7 +150,7 @@ GET /api/health
 ```json
 {
   "status": "success",
-  "message": "Training Resource Backend Running Successfully"
+  "message": "Vaps Artificial Intelligence Learning Center Backend Running Successfully"
 }
 ```
 
@@ -174,7 +172,7 @@ GET /courses
       "id": 1,
       "course_name": "Claude 101",
       "provider": "Anthropic",
-      "duration": "30-60 Minutes",
+      "duration": "2.5 Hours",
       "certificate": "Yes",
       "course_url": "https://anthropic.skilljar.com/claude-101"
     },
@@ -182,7 +180,7 @@ GET /courses
       "id": 2,
       "course_name": "AI Fluency: Framework & Foundations",
       "provider": "Anthropic",
-      "duration": "1.1 Hours",
+      "duration": "3-4 Hours",
       "certificate": "Yes",
       "course_url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations"
     }
@@ -194,10 +192,10 @@ GET /courses
 
 ## 📚 Current Courses Catalog
 
-| ID | Course Name | Provider | Duration | Certificate | URL |
+| ID | Course Name | Provider | Actual Duration | Certificate | URL |
 |---|---|---|---|---|---|
-| 1 | Claude 101 | Anthropic | 30–60 Minutes | Yes | [Open Course](https://anthropic.skilljar.com/claude-101) |
-| 2 | AI Fluency: Framework & Foundations | Anthropic | 1.1 Hours | Yes | [Open Course](https://anthropic.skilljar.com/ai-fluency-framework-foundations) |
+| 1 | Claude 101 | Anthropic | 2.5 Hours | Yes | [Open Course](https://anthropic.skilljar.com/claude-101) |
+| 2 | AI Fluency: Framework & Foundations | Anthropic | 3–4 Hours | Yes | [Open Course](https://anthropic.skilljar.com/ai-fluency-framework-foundations) |
 
 ---
 

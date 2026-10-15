@@ -1,18 +1,24 @@
 import React from "react";
-import { Sparkles } from "lucide-react";
+import vapsLogo from "../assets/vaps_logo.png";
 
+/**
+ * Top navigation header featuring official VAPS logo and organization branding.
+ */
 export default function Navbar() {
   return (
     <header className="navbar">
       <div className="nav-container">
-        {/* Brand */}
+        {/* Brand with Left-aligned Company Logo */}
         <div className="brand">
-          <div className="brand-icon-wrapper">
-            <Sparkles size={22} color="#ffffff" />
-          </div>
-          <div>
-            <div className="brand-title">AI Course Catalog</div>
-            <div className="brand-subtitle">Curated Artificial Intelligence Learning Directory</div>
+          <img 
+            src={vapsLogo} 
+            alt="VAPS Technosoft Logo" 
+            className="brand-logo-img" 
+          />
+          <div className="brand-divider" aria-hidden="true" />
+          <div className="brand-text-group">
+            <div className="brand-title">Vaps Artificial Intelligence Learning Center</div>
+            <div className="brand-subtitle">Curated AI Learning Directory</div>
           </div>
         </div>
       </div>

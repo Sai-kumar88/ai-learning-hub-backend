@@ -3,13 +3,11 @@ import { RotateCw, GraduationCap } from "lucide-react";
 import CourseCard from "./CourseCard";
 
 /**
- * Grid layout for rendering courses, loading state, or empty search results.
+ * Grid layout for rendering courses or loading/empty state.
  */
 export default function CourseGrid({
   courses = [],
-  isLoading = false,
-  searchQuery = "",
-  onClearFilters
+  isLoading = false
 }) {
   // 1. Loading State
   if (isLoading) {
@@ -34,22 +32,10 @@ export default function CourseGrid({
         <div className="empty-icon">
           <GraduationCap size={32} aria-hidden="true" />
         </div>
-        <h3 className="empty-title">No Courses Found</h3>
+        <h3 className="empty-title">No Courses Available</h3>
         <p className="empty-desc">
-          {searchQuery
-            ? `No courses matching "${searchQuery}". Try clearing your search filters.`
-            : "No courses are currently available in the database."}
+          No courses are currently available in the database.
         </p>
-        {searchQuery && (
-          <button
-            type="button"
-            className="btn-secondary"
-            onClick={onClearFilters}
-            style={{ marginTop: "1rem" }}
-          >
-            Clear All Filters
-          </button>
-        )}
       </div>
     );
   }

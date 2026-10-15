@@ -1,4 +1,4 @@
-# AI Course Catalog - Frontend
+# Vaps Artificial Intelligence Learning Center - Frontend
 
 A clean, modern course catalog directory built with **React**, **Vite**, and **Vanilla CSS**.
 
@@ -7,14 +7,12 @@ A clean, modern course catalog directory built with **React**, **Vite**, and **V
 ## 🌟 Key Features
 
 1. **Simple Course Catalog**:
-   - Clean, focused AI course cards featuring course title, duration, accredited certificate availability, and provider badges.
+   - Clean, focused AI course cards featuring course title, actual curriculum duration, accredited certificate availability, and provider badges.
    - One-click **"Start Learning"** CTA button linking directly to external course materials.
-   - Real-time instant search across course names and providers.
-   - Provider filter chips for quickly exploring specific platforms (e.g., Anthropic).
 
-2. **Zero Tracking & No Employee ID Required**:
-   - Completely friction-free catalog exploration with no login, no employee ID requirements, and no tracking.
-   - Pure discovery interface without progress bars or certificate submission steps.
+2. **Zero Tracking & No Friction**:
+   - Completely friction-free catalog exploration with zero login, zero employee ID requirements, and no tracking.
+   - Streamlined direct discovery without clutter or progress bars.
 
 3. **Responsive & Ultra-Clean UI**:
    - Sleek typography and minimalist surfaces inspired by modern design systems.

@@ -1,7 +1,7 @@
 @echo off
-title AI Course Catalog
+title Vaps Artificial Intelligence Learning Center
 echo ========================================================
-echo Starting AI Course Catalog (Backend + Frontend)...
+echo Starting Vaps Artificial Intelligence Learning Center...
 echo ========================================================
 cd /d "%~dp0"
 

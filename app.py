@@ -41,7 +41,7 @@ def create_app() -> Flask:
     def api_health():
         return jsonify({
             "status": "success",
-            "message": "AI Course Catalog Backend Running Successfully"
+            "message": "Vaps Artificial Intelligence Learning Center Backend Running Successfully"
         })
 
     # Frontend Single Page Application & Static Assets
@@ -52,7 +52,7 @@ def create_app() -> Flask:
         if path == "" and request.headers.get("Accept") == "application/json":
             return jsonify({
                 "status": "success",
-                "message": "AI Course Catalog Backend Running Successfully"
+                "message": "Vaps Artificial Intelligence Learning Center Backend Running Successfully"
             })
 
         dist_folder = Config.FRONTEND_DIST
@@ -69,7 +69,7 @@ def create_app() -> Flask:
 
         return jsonify({
             "status": "success",
-            "message": "AI Course Catalog API running. Run 'npm run build' inside frontend/ to build the web portal."
+            "message": "Vaps Artificial Intelligence Learning Center API running. Run 'npm run build' inside frontend/ to build the web portal."
         })
 
     # Global Error Handlers
@@ -105,7 +105,7 @@ if __name__ == "__main__":
         threading.Timer(1.2, open_browser).start()
 
     print("\n" + "=" * 60)
-    print("  AI Course Catalog is running!")
+    print("  Vaps Artificial Intelligence Learning Center is running!")
     print(f"  URL: http://127.0.0.1:{Config.PORT}")
     print("=" * 60 + "\n")
 
