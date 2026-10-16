@@ -6,14 +6,14 @@ load_dotenv()
 
 class Config:
     """Application configuration settings."""
-    DEBUG = os.getenv("FLASK_DEBUG", "True").lower() in ("true", "1", "yes")
+    DEBUG = os.getenv("FLASK_DEBUG", "False").lower() in ("true", "1", "yes")
     JSON_SORT_KEYS = False
 
     # Directory Paths
     BASE_DIR = Path(__file__).resolve().parent
-    DATA_FOLDER = BASE_DIR / "data"
-    COURSES_FILE = DATA_FOLDER / "courses.json"
-    FRONTEND_DIST = BASE_DIR / "frontend" / "dist"
+    COURSES_FILE = BASE_DIR / "data" / "courses.json"
+    TEMPLATES_DIR = BASE_DIR / "templates"
+    STATIC_DIR = BASE_DIR / "static"
 
     # Server settings
     HOST = os.getenv("HOST", "0.0.0.0")

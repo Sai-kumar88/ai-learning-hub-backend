@@ -4,31 +4,17 @@ from utils.response import success_response, error_response
 
 course_bp = Blueprint("course_bp", __name__)
 
-@course_bp.route("/courses", methods=["GET"])
+@course_bp.get("/courses")
 def get_courses():
-    """
-    Fetch all courses available in the catalog.
-    
-    Returns:
-        JSON response with list of courses.
-    """
-    courses = get_all_courses()
+    """Fetch all courses available in the catalog."""
     return success_response(
-        data=courses,
+        data=get_all_courses(),
         message="Courses fetched successfully"
     )
 
-@course_bp.route("/courses/<int:course_id>", methods=["GET"])
+@course_bp.get("/courses/<int:course_id>")
 def get_course(course_id: int):
-    """
-    Fetch details for a single course by ID.
-
-    Args:
-        course_id (int): Course identifier.
-
-    Returns:
-        JSON response with course data or 404 error.
-    """
+    """Fetch details for a single course by ID."""
     course = get_course_by_id(course_id)
     if not course:
         return error_response(

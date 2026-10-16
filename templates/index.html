@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vaps Artificial Intelligence Learning Center</title>
+  <meta name="description" content="Explore world-class, accredited AI courses and hands-on curriculums from leading AI pioneers at Vaps Artificial Intelligence Learning Center." />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/vaps_icon.png') }}" />
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <img 
+          src="{{ url_for('static', filename='images/vaps_logo.png') }}" 
+          alt="VAPS Technosoft Logo" 
+          class="brand-logo-img"
+          onerror="this.style.display='none'"
+        />
+        <div class="brand-divider" aria-hidden="true"></div>
+        <div class="brand-text-group">
+          <span class="brand-title">Vaps Artificial Intelligence Learning Center</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Presentation Section -->
+  <section class="hero-section">
+    <div class="hero-header">
+      <h1 class="hero-title">
+        Vaps Artificial Intelligence <span>Learning Center</span>
+      </h1>
+      <p class="hero-subtitle">
+        Explore world-class, accredited AI courses and hands-on curriculums from leading AI pioneers.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Course Catalog Content -->
+  <main class="main-container">
+    <div class="courses-grid" id="coursesGrid" role="list">
+      {% for course in courses %}
+      <article class="course-card" role="listitem">
+        <div>
+          <div class="course-card-top">
+            <span class="provider-badge">
+              {{ course.provider or 'AI Learning' }}
+            </span>
+            <span class="badge-catalog-type">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                <path d="M6 6h10"></path>
+                <path d="M6 10h10"></path>
+              </svg>
+              <span>Online Course</span>
+            </span>
+          </div>
+
+          <h2 class="course-title">{{ course.course_name }}</h2>
+
+          <div class="course-meta">
+            <div class="meta-item">
+              <svg class="meta-icon" style="color: var(--accent-secondary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>{{ course.duration or 'Self-paced' }}</span>
+            </div>
+
+            <div class="meta-item">
+              <svg class="meta-icon" style="color: var(--accent-primary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="6"></circle>
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+              </svg>
+              <span>Certificate: {{ course.certificate or 'Included' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="course-actions">
+          <a 
+            href="{{ course.course_url }}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-primary"
+            aria-label="Start learning {{ course.course_name }}"
+          >
+            <span>Start Learning</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </main>
+
+</body>
+</html>
