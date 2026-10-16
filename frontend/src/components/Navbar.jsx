@@ -18,7 +18,6 @@ export default function Navbar() {
           <div className="brand-divider" aria-hidden="true" />
           <div className="brand-text-group">
             <div className="brand-title">Vaps Artificial Intelligence Learning Center</div>
-            <div className="brand-subtitle">Curated AI Learning Directory</div>
           </div>
         </div>
       </div>

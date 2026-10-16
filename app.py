@@ -60,11 +60,6 @@ def create_app() -> Flask:
         if index_file.is_file():
             return send_from_directory(str(dist_folder), "index.html")
 
-        # Fallback JSON only if frontend build has not been generated
-        return jsonify({
-            "status": "success",
-            "message": "Vaps Artificial Intelligence Learning Center API running. Run 'npm run build' inside frontend/ to build the web portal."
-        })
 
     # Global Error Handlers
     @app.errorhandler(404)
