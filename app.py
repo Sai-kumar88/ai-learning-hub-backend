@@ -32,12 +32,29 @@ def create_app() -> Flask:
     app.config.from_object(Config)
 
     CORS(app)
+
     app.register_blueprint(course_bp)
+    app.register_blueprint(course_bp, name="api_course_bp", url_prefix="/api")
 
     @app.get("/")
+    @app.get("/api/index")
     def home():
         return render_template("index.html", courses=get_all_courses())
 
+    @app.get("/api")
+    @app.get("/api/")
+    def api_root():
+        return jsonify(
+            status="success",
+            message="Vaps Artificial Intelligence Learning Center API",
+            endpoints={
+                "home": "/",
+                "courses": "/courses or /api/courses",
+                "health": "/api/health",
+            },
+        )
+
+    @app.get("/health")
     @app.get("/api/health")
     def api_health():
         return jsonify(
